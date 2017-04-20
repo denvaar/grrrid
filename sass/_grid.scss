@@ -1,0 +1,87 @@
+@import "_variables";
+
+@mixin grid-item {
+  flex: 1;
+}
+
+.grid-item-1 {
+  @include grid-item;
+}
+
+.grid-item-2 {
+  @include grid-item;
+  flex: 2;
+}
+
+.grid-item-3 {
+  @include grid-item;
+  flex: 3;
+}
+
+.grid-item-4 {
+  @include grid-item;
+  flex: 4;
+}
+
+.grid-item-5 {
+  @include grid-item;
+  flex: 5;
+}
+
+@mixin grid-row {
+  display: flex;
+  .grid-item {
+    @include grid-item;
+  }
+}
+
+@mixin gc {
+  display: flex;
+  flex-direction: column;
+  .grid-item {
+    @include grid-item;
+  }
+}
+
+.grid {
+  .grid-row {
+    @include grid-row;
+  }
+  .grid-row--mobile {
+    @include grid-row;
+    flex-direction: column;
+  }
+  .grid-row--tablet {
+    @include grid-row;
+    flex-direction: column;
+  }
+  .gc {
+    @include gc;
+  }
+}
+
+@media all and (min-width: $mobile-device-width) {
+  .grid {
+    .grid-row--mobile {
+      @include grid-row;
+      flex-direction: row;
+    }
+    .grid-row--tablet {
+      @include grid-row;
+      flex-direction: column;
+    }
+  }
+}
+@media all and (min-width: $tablet-device-width) {
+  .grid {
+    .grid-row--tablet {
+      @include grid-row;
+      flex-direction: row;
+    }
+  
+  }
+}
+@media all and (min-width: $laptop-device-width) {
+  .grid {
+  }
+}
