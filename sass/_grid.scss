@@ -2,6 +2,14 @@
 
 @mixin grid-item {
   flex: 1;
+  @if $debug {
+    background: #d58ea6;
+    min-width: 20px;
+    min-height: 20px;
+    margin: 3px;
+    border: 6px solid #242f69;
+    border-radius: 4px;
+  }
 }
 
 .grid-item-1 {
@@ -35,9 +43,10 @@
   }
 }
 
-@mixin gc {
+@mixin grid-column {
   display: flex;
   flex-direction: column;
+  height: inherit;
   .grid-item {
     @include grid-item;
   }
@@ -55,9 +64,19 @@
     @include grid-row;
     flex-direction: column;
   }
-  .gc {
-    @include gc;
+  .grid-column {
+    @include grid-column;
   }
+}
+
+.grid-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-centered {
+  justify-content: center;
+  align-items: center;
 }
 
 @media all and (min-width: $mobile-device-width) {
@@ -78,7 +97,7 @@
       @include grid-row;
       flex-direction: row;
     }
-  
+
   }
 }
 @media all and (min-width: $laptop-device-width) {

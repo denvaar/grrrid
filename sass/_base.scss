@@ -3,6 +3,9 @@
 html {
   font-family: $default-font-family;
   color: #666;
+  @if $debug {
+    background: #00a091;
+  }
 }
 
 body {
